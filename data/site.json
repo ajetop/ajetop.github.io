@@ -1,0 +1,36 @@
+{
+  "profile": {
+    "name": "Nama Kamu",
+    "role": "Product Designer & Frontend Developer",
+    "location": "Jakarta, ID",
+    "desc": "Bangun produk digital yang clean, cepat, dan manusiawi. Fokus di UI mobile, design system, dan UX intuitif.",
+    "avatar": "https://i.pravatar.cc/300?img=15",
+    "stats": [
+      {"label": "Proyek", "value": "24+"},
+      {"label": "Tahun", "value": "5th"},
+      {"label": "Kepuasan", "value": "98%"}
+    ]
+  },
+  "skills": [
+    {"name": "UI Design - Figma", "level": "92%"},
+    {"name": "Frontend - HTML/CSS/JS", "level": "88%"},
+    {"name": "React / Next.js", "level": "80%"}
+  ],
+  "works": [
+    {"id": 1, "cat": "app", "year": "2026", "title": "Dompet Mobile - Fintech", "desc": "Redesign onboarding, +32% konversi."},
+    {"id": 2, "cat": "web", "year": "2025", "title": "Portal Edukasi", "desc": "Dashboard guru-murid, clean & cepat."},
+    {"id": 3, "cat": "brand", "year": "2025", "title": "Kopi Lokal Rebrand", "desc": "Identitas + packaging minimal."}
+  ],
+  "pages": {
+    "blog": [
+      {"slug": "desain-mobile-2026", "title": "Tren Desain Mobile 2026", "date": "2026-09-10", "excerpt": "Neumorphism balik, tapi lebih subtle. Ini rangkuman pola UI yang work."},
+      {"slug": "optimasi-performa", "title": "Optimasi Performa Tanpa Ribet", "date": "2026-08-22", "excerpt": "LCP, CLS, dan trik lazy-load yang sering kelewat."},
+      {"slug": "design-system-kecil", "title": "Design System untuk Tim Kecil", "date": "2026-07-15", "excerpt": "Tidak perlu 100 komponen. Mulai dari 12 token ini."}
+    ],
+    "koleksi": [
+      {"slug": "ikon-neo", "name": "Ikon Neo - 240 assets", "cat": "icons"},
+      {"slug": "wallpaper-gradient", "name": "Wallpaper Gradient Pack", "cat": "wallpaper"},
+      {"slug": "template-notion", "name": "Template Notion Portfolio", "cat": "template"}
+    ]
+  }
+}
