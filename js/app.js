@@ -19,20 +19,29 @@ async function loadData(){
   }
   return SITE;
 }
+const CORE=["beranda","karya","blog","kontak"];
 const Layout={
   nav:[
     {id:"beranda",label:"Beranda",icon:"\u2302"},
-    {id:"tentang",label:"Tentang",icon:"\u25D0"},
-    {id:"skill",label:"Skill",icon:"\u2726"},
     {id:"karya",label:"Karya",icon:"\u2B22"},
     {id:"blog",label:"Blog",icon:"\u2630"},
-    {id:"koleksi",label:"Koleksi",icon:"\u25C6"},
-    {id:"kontak",label:"Kontak",icon:"\u2709"}
+    {id:"kontak",label:"Kontak",icon:"\u2709"},
+    {id:"tentang",label:"Tentang",icon:"\u25D0"},
+    {id:"skill",label:"Skill",icon:"\u2726"},
+    {id:"koleksi",label:"Koleksi",icon:"\u25C6"}
   ],
+  link(n,active){
+    return `<a href="#${n.id}" data-ref="${n.id}" class="${n.id===active?'active':''}"><i>${n.icon}</i><span>${n.label}</span></a>`;
+  },
   renderNav(active){
-    const h=this.nav.map(n=>`<a href="#${n.id}" data-ref="${n.id}" class="${n.id===active?'active':''}"><i>${n.icon}</i><span>${n.label}</span></a>`).join("");
-    const t=document.getElementById("topNav"),b=document.getElementById("bottomNav");
-    if(t) t.innerHTML=h; if(b) b.innerHTML=h;
+    const main=this.nav.filter(n=>CORE.includes(n.id));
+    const all=this.nav.map(n=>this.link(n,active)).join("");
+    const t=document.getElementById("topNav"),b=document.getElementById("bottomNav"),d=document.getElementById("drawerList");
+    if(t) t.innerHTML=all;
+    if(b) b.innerHTML=main.map(n=>this.link(n,active)).join("")+`<button id="moreBtn" aria-label="menu lainnya" class="${CORE.includes(active)?'':'active'}"><i>\u2630</i><span>Lainnya</span></button>`;
+    if(d) d.innerHTML=all;
+    document.getElementById("moreBtn")?.addEventListener("click",openDrawer);
+    d?.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeDrawer));
   },
   hero(p){
     return `<section class="hero-app"><div class="hero-card"><div class="hero-top"><img class="avatar" src="${p.avatar}" alt="foto"><div class="chip-online"><span></span> Available</div></div><h1>${p.name}<span class="accent">.</span></h1><p class="role">${p.role} \u2014 ${p.location}</p><p class="desc">${p.desc}</p><div class="cta-row"><a href="#kontak" class="btn primary">Hubungi \u2192</a><a href="#karya" class="btn ghost">Lihat Karya</a></div><div class="stats">${p.stats.map(s=>`<div><b>${s.value}</b><span>${s.label}</span></div>`).join("")}</div></div><div class="hero-actions"><a href="#" class="mini-card"><span>\u2B22</span> GitHub</a><a href="#" class="mini-card"><span>\u25CE</span> LinkedIn</a><a href="#" class="mini-card"><span>\u2726</span> CV.pdf</a></div></section>`;
@@ -57,6 +66,29 @@ function toast(m){
 function bindForm(){
   const f=document.getElementById("form");
   if(f) f.addEventListener("submit",e=>{e.preventDefault(); toast("Pesan terkirim \u2713 \u2014 demo"); e.target.reset();});
+}
+function openDrawer(){
+  document.getElementById("drawer")?.classList.add("open");
+  document.getElementById("backdrop")?.classList.add("show");
+  document.getElementById("drawer")?.setAttribute("aria-hidden","false");
+  document.getElementById("moreBtn")?.classList.add("active");
+}
+function closeDrawer(){
+  document.getElementById("drawer")?.classList.remove("open");
+  document.getElementById("backdrop")?.classList.remove("show");
+  document.getElementById("drawer")?.setAttribute("aria-hidden","true");
+}
+function setTheme(t){
+  document.documentElement.dataset.theme=t;
+  try{localStorage.setItem("theme",t)}catch(e){}
+  const b=document.getElementById("themeBtn");
+  if(b) b.textContent=t==="dark"?"\u263E":"\u25D0";
+}
+function initTheme(){
+  let t=null;
+  try{t=localStorage.getItem("theme")}catch(e){}
+  if(!t) t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+  setTheme(t);
 }
 function workDetail(id,data){
   const w=data.works.find(x=>String(x.id)===String(id));
@@ -102,24 +134,24 @@ async function render(){
   else html=`<section class="section"><div class="card"><h2>404</h2><p class="muted">Halaman #${cur} tidak ada.</p><a href="#beranda" class="btn primary">Ke Beranda</a></div></section>`;
   c.innerHTML=html;
   bindForm();
-  window.scrollTo({top:0,behavior:"instant"});
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    if(a.dataset.bound) return; a.dataset.bound="1";
-    a.addEventListener("click",e=>{
-      const href=a.getAttribute("href");
-      if(href.startsWith("#") && href.length>1 && !href.includes("/")){
-        const id=href.slice(1);
-        if(document.getElementById(id)){ e.preventDefault(); document.getElementById(id)?.scrollIntoView({behavior:"smooth"}); }
-      }
-    });
-  });
+  closeDrawer();
+  window.scrollTo({top:0});
 }
 window.addEventListener("hashchange",render);
 document.getElementById("themeBtn")?.addEventListener("click",()=>{
-  const dark=document.documentElement.style.colorScheme==="dark";
-  document.documentElement.style.colorScheme=dark?"light":"dark";
-  document.body.style.filter=dark?"":"invert(1) hue-rotate(180deg)";
-  document.body.querySelectorAll("img").forEach(i=>i.style.filter=dark?"":"invert(1) hue-rotate(180deg)");
-  toast(dark?"Light mode":"Dark mode (demo)");
+  const next=document.documentElement.dataset.theme==="dark"?"light":"dark";
+  setTheme(next);
+  toast(next==="dark"?"Dark mode":"Light mode");
 });
+document.getElementById("menuBtn")?.addEventListener("click",openDrawer);
+document.getElementById("drawerClose")?.addEventListener("click",closeDrawer);
+document.getElementById("backdrop")?.addEventListener("click",closeDrawer);
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeDrawer()});
+let touchY=null;
+document.getElementById("drawer")?.addEventListener("touchstart",e=>{touchY=e.touches[0].clientY},{passive:true});
+document.getElementById("drawer")?.addEventListener("touchmove",e=>{
+  if(touchY===null) return;
+  if(e.touches[0].clientY-touchY>60) closeDrawer();
+},{passive:true});
+initTheme();
 render();

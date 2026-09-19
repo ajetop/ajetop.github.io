@@ -15,11 +15,21 @@
     <div class="appbar-inner">
       <div class="brand"><div class="logo">●</div><b>profil.</b></div>
       <nav class="top-nav" id="topNav"></nav>
-      <button class="icon-btn" id="themeBtn" aria-label="theme">◐</button>
+      <div class="app-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="theme">◐</button>
+        <button class="icon-btn" id="menuBtn" aria-label="menu" style="display:none">☰</button>
+      </div>
     </div>
   </header>
   <main id="content"><div class="card">Memuat...</div></main>
   <nav class="bottom-nav" id="bottomNav"></nav>
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-handle"></div>
+    <div class="drawer-head"><b>Menu</b><button class="drawer-close" id="drawerClose">×</button></div>
+    <div class="drawer-list" id="drawerList"></div>
+    <div class="drawer-foot">Ketuk item untuk navigasi</div>
+  </aside>
   <div id="toast" class="toast"></div>
 </div>
 <script src="js/app.js"></script>
