@@ -1,0 +1,15 @@
+{
+  "name": "Portal Profil",
+  "short_name": "Profil",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F6F7FB",
+  "theme_color": "#6C5CE7",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
