@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Beranda
+title: Personal Website
 ---
 <div id="jekyll-fallback">
   <section class="hero-app">
@@ -32,19 +32,7 @@ title: Beranda
 
   <section id="tentang" class="section">
     <div class="section-head"><h2>Tentang</h2></div>
-    <div class="card">
-      <p class="lead">Saya bantu brand & startup ubah ide jadi produk yang dipakai orang — bukan cuma dilihat.</p>
-      <div class="info-grid">
-        <div class="info"><span class="k">Lokasi</span><span class="v">{{ site.data.site.profile.location }} • Remote</span></div>
-        <div class="info"><span class="k">Role</span><span class="v">{{ site.data.site.profile.role }}</span></div>
-        <div class="info"><span class="k">Fokus</span><span class="v">Mobile UI • Design System</span></div>
-      </div>
-      <div class="values">
-        <div class="value"><b>01</b><h4>Cepat & Ringan</h4><p>Optimasi performa, 60fps</p></div>
-        <div class="value"><b>02</b><h4>Intuitif</h4><p>Navigasi jelas</p></div>
-        <div class="value"><b>03</b><h4>Clean</h4><p>Whitespace rapi</p></div>
-      </div>
-    </div>
+    {% include about-card.html %}
   </section>
 
   <section id="skill" class="section">
@@ -55,7 +43,7 @@ title: Beranda
         <div class="skill"><div class="skill-head"><span>{{ s.name }}</span><span>{{ s.level }}</span></div><div class="bar"><i style="width:{{ s.level }}"></i></div></div>
         {% endfor %}
       </div>
-      <div class="tags"><span>Design System</span><span>Prototyping</span><span>UX Research</span><span>Motion</span><span>Responsive</span><span>A11y</span></div>
+      <div class="tags"><span>Cari Kayu Bakar</span><span>>Angon Bebek</span><span>Nyiram Pekarangan</span><span>Nyeduh Kopi</span><span>Mancing</span><span>Nyantai</span></div>
     </div>
   </section>
 
@@ -70,19 +58,6 @@ title: Beranda
   
   <section id="kontak" class="section">
     <div class="section-head"><h2>Kontak</h2><span class="muted">Balas &lt; 24 jam</span></div>
-    <div class="card contact-card">
-      <div class="contact-info">
-        <a class="c-item" href="mailto:{{ site.data.site.kontak.email }}"><i>✉</i> {{ site.data.site.kontak.email }}</a>
-        <a class="c-item" href="https://{{ site.data.site.kontak.whatsapp }}"><i>◷</i> {{ site.data.site.kontak.whatsapp }}</a>
-        <a class="c-item" href="#"><i>◎</i> {{ site.data.site.kontak.location }}</a>
-      </div>
-      <form id="form" novalidate>
-        <label>Nama<input required name="name" placeholder="Nama kamu" autocomplete="name"></label>
-        <label>Email<input required type="email" name="email" placeholder="email@contoh.com" autocomplete="email"></label>
-        <label>Pesan<textarea required name="msg" rows="4" placeholder="Ceritakan kebutuhan..."></textarea></label>
-        <button class="btn primary full" type="submit">Kirim Pesan</button>
-        <p class="form-note">Demo — tampil toast, tanpa backend.</p>
-      </form>
-    </div>
+    {% include contact-card.html %}
   </section>
 </div>

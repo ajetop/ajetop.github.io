@@ -1,8 +1,8 @@
 profile:
   name: "Teja Sukakemana"
-  role: "Product Designer & Frontend Developer"
-  location: "Jakarta, ID"
-  desc: "Bangun produk digital yang clean, cepat, dan manusiawi. Fokus di UI mobile, design system, dan UX intuitif."
+  role: "Pengamat Situasi & Praktisi Tenang"
+  location: "Lumajang, ID"
+  desc: "Dalam hening aku berjalan, tak perlu riuh untuk sampai tujuan."
   avatar: "https://i.pravatar.cc/300?img=15"
   stats:
     - { label: "Proyek", value: "24+" }
@@ -10,16 +10,16 @@ profile:
     - { label: "Kepuasan", value: "98%" }
 
 skills:
-  - { name: "UI Design - Figma", level: "92%" }
-  - { name: "Frontend - HTML/CSS/JS", level: "88%" }
-  - { name: "React / Next.js", level: "80%" }
+  - { name: "Ngarit", level: "92%" }
+  - { name: "Tani", level: "88%" }
+  - { name: "Jagongan", level: "50%" }
 
 kontak:
-  email: "nama@email.com"
-  whatsapp: "wa.me/62xxxx"
-  location: "Jakarta • Remote"
+  email: "tejanyadia@gmail.com"
+  whatsapp: "wa.me/6283826361773"
+  location: "Lumajang • Ngerumput"
 
 social:
-  - { label: "GitHub", icon: "⬢", url: "#" }
-  - { label: "LinkedIn", icon: "◎", url: "#" }
+  - { label: "GitHub", icon: "⬢", url: "https://kohardsi.github.io" }
+  - { label: "LinkedIn", icon: "◎", url: "http://linkedin.com/in/teja-sukmana/" }
   - { label: "CV.pdf", icon: "✦", url: "#" }

@@ -1,13 +1,27 @@
-title: "Portal Profil"
-description: "Portfolio dan portal profil modern dengan nuansa mobile-app."
-url: ""
+title: "Teja Sukakemana"
+description: "Portfolio dan portal profil modern dengan nuansa mobile-app — karya, blog, dan koleksi."
+url: "https://ajetop.github.io"
 baseurl: ""
+lang: id-ID
 
 author:
-  name: "Nama Kamu"
+  name: "Teja Sukakemana"
   role: "Product Designer & Frontend Developer"
   location: "Jakarta, ID"
-  email: "nama@email.com"
+  email: "tejanyadia@email.com"
+  url: "https://kohardsi.github.io"
+  twitter: "teja_7x"
+
+logo: /assets/img/og-default.jpg
+image: /assets/img/og-default.jpg
+twitter:
+  username: Teja_7x
+
+social:
+  name: "Teja Sukakemana"
+  links:
+    - https://github.com/kohardsi
+    - https://linkedin.com/in/teja-sukmana
 
 plugins:
   - jekyll-feed
@@ -35,16 +49,19 @@ defaults:
       type: "karya"
     values:
       layout: karya
+      image: /assets/img/og-default.jpg
   - scope:
       path: ""
       type: "koleksi"
     values:
       layout: koleksi
+      image: /assets/img/og-default.jpg
   - scope:
       path: ""
       type: "posts"
     values:
       layout: post
+      image: /assets/img/og-default.jpg
 
 exclude:
   - README.md
@@ -56,3 +73,7 @@ exclude:
   - js
   - script.js
   - style.css
+  - "*.gemspec"
+
+sass:
+  style: compressed

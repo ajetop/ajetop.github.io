@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<section class="section">
+  <a href="{{ '/' | relative_url }}#blog" class="link-more">← Kembali ke Blog</a>
+  <article class="card" style="margin-top:10px">
+    <div style="margin-top:14px">
+      <span class="cat">{{ page.cat | default: "post" }} • {{ page.year | default: "—" }}</span>
+      <h1 style="margin:6px 0 8px;font-size:26px;letter-spacing:-.03em;line-height:1.15">{{ page.title }}</h1>
+      {% if page.excerpt %}<p class="muted" style="margin-top:6px">{{ page.excerpt }}</p>{% endif %}
+      <div class="prose">
+        {{ content }}
+      </div>
+    </div>
+  </article>
+</section>

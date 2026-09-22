@@ -1,0 +1,10 @@
+{% assign url = page.url | absolute_url %}
+{% if page.layout == "post" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ page.title | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","dateModified":"{{ page.last_modified_at | default: page.date | date_to_xmlschema }}","author":{"@type":"Person","name":{{ site.author.name | jsonify }}},"mainEntityOfPage":{"@type":"WebPage","@id":{{ url | jsonify }} },"description":{{ page.excerpt | default: page.description | strip_html | strip | jsonify }},"image":{{ page.image | default: site.image | absolute_url | jsonify }}}</script>
+{% elsif page.layout == "karya" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":{{ page.title | jsonify }},"description":{{ page.desc | default: page.excerpt | strip_html | strip | jsonify }},"author":{"@type":"Person","name":{{ site.author.name | jsonify }}},"url":{{ url | jsonify }},"image":{{ page.image | default: site.image | absolute_url | jsonify }}}</script>
+{% elsif page.layout == "koleksi" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":{{ page.title | jsonify }},"description":{{ page.desc | default: page.excerpt | strip_html | strip | jsonify }},"author":{"@type":"Person","name":{{ site.author.name | jsonify }}},"url":{{ url | jsonify }},"image":{{ page.image | default: site.image | absolute_url | jsonify }}}</script>
+{% else %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":{{ site.author.name | jsonify }},"jobTitle":{{ site.author.role | jsonify }},"url":{{ site.url | append: site.baseurl | jsonify }},"image":{{ site.data.site.profile.avatar | jsonify }},"sameAs":{{ site.social.links | jsonify }}}</script>
+{% endif %}

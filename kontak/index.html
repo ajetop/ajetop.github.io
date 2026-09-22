@@ -4,18 +4,5 @@ title: Kontak
 ---
 <section class="section">
   <div class="section-head"><h2>Kontak</h2><span class="muted">Balas &lt; 24 jam</span></div>
-  <div class="card contact-card">
-    <div class="contact-info">
-      <a class="c-item" href="mailto:{{ site.data.site.kontak.email }}"><i>✉</i> {{ site.data.site.kontak.email }}</a>
-      <a class="c-item" href="https://{{ site.data.site.kontak.whatsapp }}"><i>◷</i> {{ site.data.site.kontak.whatsapp }}</a>
-      <a class="c-item" href="#"><i>◎</i> {{ site.data.site.kontak.location }}</a>
-    </div>
-    <form id="form" novalidate>
-      <label>Nama<input required name="name" placeholder="Nama kamu" autocomplete="name"></label>
-      <label>Email<input required type="email" name="email" placeholder="email@contoh.com" autocomplete="email"></label>
-      <label>Pesan<textarea required name="msg" rows="4" placeholder="Ceritakan kebutuhan..."></textarea></label>
-      <button class="btn primary full" type="submit">Kirim Pesan</button>
-      <p class="form-note">Demo — tampil toast, tanpa backend.</p>
-    </form>
-  </div>
+  {% include contact-card.html %}
 </section>

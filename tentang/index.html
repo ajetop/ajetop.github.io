@@ -5,17 +5,5 @@ description: "Tentang profil, lokasi, dan nilai kerja."
 ---
 <section class="section">
   <div class="section-head"><h2>Tentang</h2><a href="{{ '/' | relative_url }}" class="link-more">← Beranda</a></div>
-  <div class="card">
-    <p class="lead">Saya bantu brand & startup ubah ide jadi produk yang dipakai orang — bukan cuma dilihat.</p>
-    <div class="info-grid">
-      <div class="info"><span class="k">Lokasi</span><span class="v">{{ site.data.site.profile.location }} • Remote</span></div>
-      <div class="info"><span class="k">Role</span><span class="v">{{ site.data.site.profile.role }}</span></div>
-      <div class="info"><span class="k">Fokus</span><span class="v">Mobile UI • Design System</span></div>
-    </div>
-    <div class="values">
-      <div class="value"><b>01</b><h4>Cepat & Ringan</h4><p>Optimasi performa, 60fps</p></div>
-      <div class="value"><b>02</b><h4>Intuitif</h4><p>Navigasi jelas</p></div>
-      <div class="value"><b>03</b><h4>Clean</h4><p>Whitespace rapi</p></div>
-    </div>
-  </div>
+  {% include about-card.html %}
 </section>

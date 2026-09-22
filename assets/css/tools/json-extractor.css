@@ -1,0 +1,698 @@
+/* =========================================================
+   JSON TOOL
+   Mengikuti CSS variable dari theme utama
+========================================================= */
+
+.json-tool {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.json-tool-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 390px) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.json-tool-sidebar,
+.json-tool-preview {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.json-tool-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+}
+
+.json-tool-card:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.json-tool-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 0 0 16px;
+
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+
+.json-tool-number {
+    display: inline-grid;
+    place-items: center;
+
+    width: 27px;
+    height: 27px;
+
+    flex: 0 0 27px;
+
+    border-radius: 9px;
+
+    background: color-mix(
+        in srgb,
+        var(--accent) 10%,
+        var(--card)
+    );
+
+    color: var(--accent);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.json-tool-tabs {
+    display: flex;
+    gap: 4px;
+
+    padding: 4px;
+    margin-bottom: 15px;
+
+    background: var(--chip);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.json-tool-tab {
+    flex: 1;
+
+    padding: 8px 10px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--muted);
+
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .18s ease;
+}
+
+.json-tool-tab:hover {
+    color: var(--text);
+}
+
+.json-tool-tab.active {
+    background: var(--card);
+    color: var(--accent);
+
+    box-shadow: 0 2px 7px rgba(15,23,42,.06);
+}
+
+[data-theme="dark"] .json-tool-tab.active {
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.json-tool-tab-pane {
+    display: none;
+}
+
+.json-tool-tab-pane.active {
+    display: block;
+}
+
+
+/* =========================================================
+   LABEL & HELPER
+========================================================= */
+
+.json-tool-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.json-tool-help {
+    margin: 0 0 9px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.json-tool-help code {
+    padding: 2px 5px;
+
+    border: 1px solid var(--line);
+    border-radius: 6px;
+
+    background: var(--chip);
+
+    color: var(--text);
+
+    font-family: Consolas, Monaco, monospace;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.json-tool-input,
+.json-tool-select,
+.json-tool-textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--text);
+
+    font: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color .18s ease,
+        box-shadow .18s ease;
+}
+
+.json-tool-input,
+.json-tool-select {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.json-tool-textarea {
+    min-height: 125px;
+    padding: 11px 12px;
+
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.json-tool-input::placeholder,
+.json-tool-textarea::placeholder {
+    color: var(--muted);
+    opacity: .75;
+}
+
+.json-tool-input:focus,
+.json-tool-select:focus,
+.json-tool-textarea:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px color-mix(
+            in srgb,
+            var(--accent) 12%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   FILE INPUT
+========================================================= */
+
+#fileInput {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 8px;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--muted);
+
+    font: inherit;
+    font-size: 12px;
+}
+
+#fileInput::file-selector-button {
+    margin-right: 9px;
+
+    padding: 6px 10px;
+
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    background: var(--chip);
+    color: var(--text);
+
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.json-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--line);
+    border-radius: 10px;
+
+    background: var(--card);
+    color: var(--text);
+
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .18s ease;
+}
+
+.json-tool-btn:hover {
+    background: var(--chip);
+}
+
+.json-tool-btn:active {
+    transform: scale(.98);
+}
+
+.json-tool-btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.json-tool-btn-primary:hover {
+    background: var(--accent2);
+    border-color: var(--accent2);
+}
+
+.json-tool-btn-outline-primary {
+    color: var(--accent);
+}
+
+.json-tool-btn-outline-primary:hover {
+    background: color-mix(
+        in srgb,
+        var(--accent) 8%,
+        var(--card)
+    );
+}
+
+.json-tool-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.json-tool-divider {
+    height: 1px;
+
+    margin: 20px 0;
+
+    background: var(--line);
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.json-tool-field {
+    margin-bottom: 16px;
+}
+
+.json-tool-field:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SCROLL / CHECKBOX AREA
+========================================================= */
+
+.json-tool-scroll-box {
+    max-height: 180px;
+
+    overflow: auto;
+
+    padding: 7px;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    background: var(--card);
+}
+
+.json-tool-scroll-box::-webkit-scrollbar,
+.json-tool-table-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.json-tool-scroll-box::-webkit-scrollbar-thumb,
+.json-tool-table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 99px;
+}
+
+.json-tool-empty {
+    display: block;
+
+    padding: 12px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-style: normal;
+    text-align: center;
+}
+
+
+/* =========================================================
+   SWITCH
+========================================================= */
+
+.json-tool-switch {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.json-tool-switch input {
+    appearance: none;
+
+    position: relative;
+
+    width: 36px;
+    height: 20px;
+
+    flex: 0 0 36px;
+
+    margin: 0;
+
+    border-radius: 99px;
+
+    background: var(--line);
+
+    cursor: pointer;
+
+    transition: .18s ease;
+}
+
+.json-tool-switch input::after {
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+
+    top: 2px;
+    left: 2px;
+
+    border-radius: 50%;
+
+    background: var(--card);
+
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+
+    transition: .18s ease;
+}
+
+.json-tool-switch input:checked {
+    background: var(--accent);
+}
+
+.json-tool-switch input:checked::after {
+    transform: translateX(16px);
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+.json-tool-export-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.json-tool-export-btn {
+    min-height: 40px;
+
+    border: 1px solid var(--line);
+    border-radius: 10px;
+
+    background: var(--card);
+    color: var(--text);
+
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .18s ease;
+}
+
+.json-tool-export-btn:hover {
+    transform: translateY(-1px);
+}
+
+.json-tool-export-btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.json-tool-export-btn-primary:hover {
+    background: var(--accent2);
+    border-color: var(--accent2);
+}
+
+.json-tool-export-btn-excel {
+    background: var(--card);
+    border-color: #217346;
+    color: #217346;
+}
+
+.json-tool-export-btn-outline {
+    color: var(--muted);
+}
+
+.json-tool-export-btn-outline:hover {
+    background: var(--chip);
+    color: var(--text);
+}
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.json-tool-preview-card {
+    padding: 18px;
+}
+
+.json-tool-preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+.json-tool-preview-title {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.json-tool-stats {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.json-tool-stats strong {
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.json-tool-table-wrapper {
+    max-height: 760px;
+
+    overflow: auto;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    background: var(--card);
+}
+
+#previewTable {
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    font-size: 11px;
+
+    color: var(--text);
+
+    white-space: nowrap;
+}
+
+#previewTable th,
+#previewTable td {
+    padding: 9px 11px;
+
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    text-align: left;
+}
+
+#previewTable th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    background: var(--chip);
+    color: var(--text);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#previewTable tbody tr:nth-child(even) {
+    background: color-mix(
+        in srgb,
+        var(--chip) 45%,
+        var(--card)
+    );
+}
+
+#previewTable tbody tr:hover {
+    background: color-mix(
+        in srgb,
+        var(--accent) 7%,
+        var(--card)
+    );
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 860px) {
+
+    .json-tool-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .json-tool-preview {
+        order: 2;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .json-tool {
+        padding: 12px 0;
+    }
+
+    .json-tool-card {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .json-tool-tabs {
+        flex-direction: column;
+    }
+
+    .json-tool-tab {
+        width: 100%;
+    }
+
+    .json-tool-export-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .json-tool-preview-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+.form-check {
+    display: flex;
+}
+.form-check input{
+    margin: 0 10px 0 0;
+}
