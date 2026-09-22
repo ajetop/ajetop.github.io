@@ -1,0 +1,58 @@
+title: "Portal Profil"
+description: "Portfolio dan portal profil modern dengan nuansa mobile-app."
+url: ""
+baseurl: ""
+
+author:
+  name: "Nama Kamu"
+  role: "Product Designer & Frontend Developer"
+  location: "Jakarta, ID"
+  email: "nama@email.com"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+permalink: /blog/:title/
+
+collections:
+  karya:
+    output: true
+    permalink: /karya/:slug/
+  koleksi:
+    output: true
+    permalink: /koleksi/:slug/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+      type: "karya"
+    values:
+      layout: karya
+  - scope:
+      path: ""
+      type: "koleksi"
+    values:
+      layout: koleksi
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - data
+  - js
+  - script.js
+  - style.css

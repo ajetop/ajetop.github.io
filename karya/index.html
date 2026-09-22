@@ -1,0 +1,20 @@
+---
+layout: default
+title: Karya Pilihan
+---
+<section class="section">
+  <div class="section-head"><h2>Semua Karya</h2><span class="pill">{{ site.karya | size }} Proyek</span></div>
+  <div class="grid">
+    {% for item in site.karya %}
+    <article class="work">
+      <div class="thumb t{{ item.thumb | default: 1 }}"></div>
+      <div class="work-body">
+        <span class="cat">{{ item.cat }} • {{ item.year | default: "2026" }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.desc }}</p>
+        <a href="{{ item.url | relative_url }}">Buka →</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

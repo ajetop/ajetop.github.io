@@ -1,0 +1,20 @@
+---
+layout: default
+title: Blog Artikel
+---
+<section class="section">
+  <div class="section-head"><h2>Semua Artikel</h2><span class="pill">{{ site.posts | size }} Post</span></div>
+  <div class="grid">
+    {% for post in site.posts %}
+    <article class="work">
+      <div class="thumb" style="background:linear-gradient(135deg,#6C5CE7,#06B6D4);height:110px"></div>
+      <div class="work-body">
+        <span class="cat">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncate: 80 }}</p>
+        <a href="{{ post.url | relative_url }}">Baca →</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

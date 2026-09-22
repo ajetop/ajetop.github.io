@@ -1,0 +1,15 @@
+---
+layout: default
+title: Keahlian
+---
+<section class="section">
+  <div class="section-head"><h2>Keahlian</h2><span class="pill">{{ site.data.site.skills.size }} Stack</span></div>
+  <div class="card">
+    <div class="skills">
+      {% for s in site.data.site.skills %}
+      <div class="skill"><div class="skill-head"><span>{{ s.name }}</span><span>{{ s.level }}</span></div><div class="bar"><i style="width:{{ s.level }}"></i></div></div>
+      {% endfor %}
+    </div>
+    <div class="tags"><span>Design System</span><span>Prototyping</span><span>UX Research</span><span>Motion</span><span>Responsive</span><span>A11y</span></div>
+  </div>
+</section>

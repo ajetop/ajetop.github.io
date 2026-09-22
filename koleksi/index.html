@@ -1,0 +1,20 @@
+---
+layout: default
+title: Koleksi Aset
+---
+<section class="section">
+  <div class="section-head"><h2>Semua Koleksi</h2><span class="pill">{{ site.koleksi | size }} Item</span></div>
+  <div class="grid">
+    {% for item in site.koleksi %}
+    <article class="work">
+      <div class="thumb" style="background:linear-gradient(135deg,#F59E0B,#EF4444);height:110px"></div>
+      <div class="work-body">
+        <span class="cat">{{ item.cat }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.desc }}</p>
+        <a href="{{ item.url | relative_url }}">Lihat →</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

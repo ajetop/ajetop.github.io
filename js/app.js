@@ -1,5 +1,5 @@
 const FALLBACK={
-  profile:{name:"Nama",role:"Product Designer & Frontend Developer",location:"Jakarta, ID",desc:"Bangun produk digital yang clean, cepat, dan manusiawi. Fokus di UI mobile, design system, dan UX intuitif.",avatar:"https://i.pravatar.cc/300?img=15",stats:[{label:"Proyek",value:"24+"},{label:"Tahun",value:"5th"},{label:"Kepuasan",value:"98%"}]},
+  profile:{name:"Teja Sukakemana",role:"Product Designer & Frontend Developer",location:"Jakarta, ID",desc:"Bangun produk digital yang clean, cepat, dan manusiawi. Fokus di UI mobile, design system, dan UX intuitif.",avatar:"https://i.pravatar.cc/300?img=15",stats:[{label:"Proyek",value:"24+"},{label:"Tahun",value:"5th"},{label:"Kepuasan",value:"98%"}]},
   skills:[{name:"UI Design - Figma",level:"92%"},{name:"Frontend - HTML/CSS/JS",level:"88%"},{name:"React / Next.js",level:"80%"}],
   works:[{id:1,cat:"app",year:"2026",title:"Dompet Mobile - Fintech",desc:"Redesign onboarding, +32% konversi."},{id:2,cat:"web",year:"2025",title:"Portal Edukasi",desc:"Dashboard guru-murid, clean & cepat."},{id:3,cat:"brand",year:"2025",title:"Kopi Lokal Rebrand",desc:"Identitas + packaging minimal."}],
   pages:{
@@ -92,7 +92,7 @@ function initTheme(){
 function workDetail(id,data){
   const w=data.works.find(x=>String(x.id)===String(id));
   if(!w) return `<section class="section"><div class="card"><h2>Tidak ditemukan</h2><p class="muted">Karya #${id} tidak ada.</p><a href="#karya" class="btn ghost">Kembali</a></div></section>`;
-  return `<section class="section"><a href="#karya" class="link-more">&larr; Kembali</a><div class="card" style="margin-top:10px">${w.image ? `<img src="${w.image}" alt="${w.title}" style="width:100%; max-height:300px; object-fit:cover; border-radius:16px; margin-bottom:14px;">` : `<div class="thumb t${w.id}" style="height:180px;border-radius:16px"></div>`}<div style="margin-top:14px"><span class="cat">${w.cat} &bull; ${w.year}</span><h2 style="margin:6px 0">${w.title}</h2><p class="muted" style="margin-bottom:12px">${w.desc}</p><div class="content" style="margin-top:10px; line-height:1.6">${w.content || "Placeholder detail karya. Ganti dengan data real di <code>data/site.json</code> &rarr; works[]."}</div></div></div></section>`;
+  return `<section class="section"><a href="#karya" class="link-more">\u2190 Kembali</a><div class="card" style="margin-top:10px"><div class="thumb t${w.id}" style="height:180px;border-radius:16px"></div><div style="margin-top:14px"><span class="cat">${w.cat} \u2022 ${w.year}</span><h2 style="margin:6px 0">${w.title}</h2><p class="muted">${w.desc}</p><p style="margin-top:10px">Placeholder detail karya. Ganti dengan data real di <code>data/site.json</code> \u2192 works[].</p></div></div></section>`;
 }
 function blogList(data){
   const posts=data.pages?.blog||[];
@@ -101,7 +101,7 @@ function blogList(data){
 function blogDetail(slug,data){
   const p=(data.pages?.blog||[]).find(x=>x.slug===slug);
   if(!p) return `<section class="section"><div class="card"><h2>Post tidak ada</h2><a href="#blog" class="btn ghost">Kembali</a></div></section>`;
-  return `<section class="section"><a href="#blog" class="link-more">\u2190 Blog</a><article class="card" style="margin-top:10px"><span class="cat">${p.date}</span><h2>${p.title}</h2><p class="muted" style="margin-top:8px">${p.excerpt}</p><div style="margin-top:12px">${p.content}</div></article></section>`;
+  return `<section class="section"><a href="#blog" class="link-more">\u2190 Blog</a><article class="card" style="margin-top:10px"><span class="cat">${p.date}</span><h2>${p.title}</h2><p class="muted" style="margin-top:8px">${p.excerpt}</p><p style="margin-top:12px">Konten dummy. Tambah field <code>content</code> di <code>data/site.json</code> untuk isi lengkap.</p></article></section>`;
 }
 function koleksiList(data){
   const items=data.pages?.koleksi||[];
